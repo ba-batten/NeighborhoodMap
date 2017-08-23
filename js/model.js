@@ -1,5 +1,6 @@
 function appViewModel() {
-  
+  this.siteName = "Get to Know Raleigh";
+
 };
 
-ko.applyBindings(appViewModel);
+ko.applyBindings(appViewModel());
