@@ -3,4 +3,4 @@ function appViewModel() {
 
 };
 
-ko.applyBindings(appViewModel());
+ko.applyBindings(new appViewModel());
