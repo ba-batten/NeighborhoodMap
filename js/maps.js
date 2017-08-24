@@ -3,7 +3,7 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('map'),
   {
     center: raleigh,
-    zoom: 16,
+    zoom: 15,
     styles: [
       {
         "elementType": "labels.text.fill",
