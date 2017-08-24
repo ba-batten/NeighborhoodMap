@@ -1,5 +1,5 @@
 function appViewModel() {
-  this.siteName = "Get to Know Raleigh";
+  this.siteName = ko.observable("Get to Know Downtown Raleigh");
 
 };
 

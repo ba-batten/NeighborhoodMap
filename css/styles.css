@@ -2,6 +2,19 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  height: 5vh;
+  background: green;
+  margin: 0;
+  padding: 0;
+}
+
+.site-name {
+  margin: 0;
+  border: 0;
 }
 
 #map {

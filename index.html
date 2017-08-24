@@ -3,21 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <!-- Bootstrap - Latest compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
     <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <!-- Bootstrap - Latest compiled and minified JavaScript -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
     <script src="js/knockout-3.4.2.js" type="text/javascript"></script>
     <title>Neighborhood Map</title>
   </head>
   <body>
-    <header><h1 data-bind="text: siteName"></h1></header>
+    <header class="header"><h1 class="site-name" data-bind="text: siteName"></h1></header>
     <section class="info-box">
     </section>
 
     <section id="map"></section>
 
+    <script src="js/model.js" type="text/javascript"></script>
     <script src="js/maps.js" type="text/javascript" async defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1M9J_w7JXTULSo3lb0-kZN46iQuxeccU&callback=initMap"
     async defer></script>
