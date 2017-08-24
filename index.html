@@ -9,13 +9,29 @@
   </head>
   <body>
     <header class="header">
-      <img src="img/hamburger.svg" alt="hamburger icon" class="hamburger-icon">
+      <img src="img/hamburger.svg" alt="hamburger icon" class="hamburger-icon" data-bind="click: openNav">
+
       <!-- <h1 class="site-name" data-bind="text: siteName"></h1> -->
     </header>
     <section class="info-box">
-      <form class="search">
-        <input type="text"></input><button class="search-icon"><img src="img/search.svg" alt="seach icon"></button>
-      </form>
+      <a href="javascript:void(0)" class="closebtn" data-bind="click: closeNav">
+        <img src="img/close.svg" alt="close icon" class="hamburger-icon">
+      </a>
+
+      <div class="info-box-content">
+
+        <form class="search">
+          <input type="text"></input><button class="search-icon"><img src="img/search.svg" alt="seach icon"></button>
+        </form>
+
+        <ul class="loc-list">
+          <li>Placeholder</li>
+          <li>Placeholder</li>
+          <li>Placeholder</li>
+        </ul>
+
+      </div>
+      
     </section>
 
     <section id="map"></section>
