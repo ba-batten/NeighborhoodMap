@@ -8,8 +8,14 @@
     <title>Neighborhood Map</title>
   </head>
   <body>
-    <header class="header"><h1 class="site-name" data-bind="text: siteName"></h1></header>
+    <header class="header">
+      <img src="img/hamburger.svg" alt="hamburger icon" class="hamburger-icon">
+      <!-- <h1 class="site-name" data-bind="text: siteName"></h1> -->
+    </header>
     <section class="info-box">
+      <form class="search">
+        <input type="text"></input><button class="search-icon"><img src="img/search.svg" alt="seach icon"></button>
+      </form>
     </section>
 
     <section id="map"></section>
