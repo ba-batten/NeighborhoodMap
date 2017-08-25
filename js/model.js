@@ -1,5 +1,5 @@
 function appViewModel() {
-  this.locations = [
+  this.locations = ko.observableArray([
     {name: 'North Carolina Museum of Natural Sciences', coordinates: {lat: 35.782452, lng: -78.639524}},
     {name: 'Artspace Visual Arts center', coordinates: {lat: 35.775900, lng: -78.636262}},
     {name: 'North Carolina Museum of History', coordinates: {lat: 35.782099, lng: -78.638474}},
@@ -20,7 +20,8 @@ function appViewModel() {
     {name: 'Legislative Building', coordinates: {lat: 35.783170, lng: -78.638931}},
     {name: 'Raleigh Times', coordinates: {lat: 35.778060, lng: -78.638655}},
     {name: 'Big Ed\'s City Market Restaurant', coordinates: {lat: 35.776264, lng: -78.635989}}
-  ]
+  ]);
+  
   this.siteName = ko.observable("Get to Know Downtown Raleigh");
 
   this.openNav = function() {

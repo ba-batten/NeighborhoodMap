@@ -7,9 +7,9 @@ function initMap() {
     zoom: 15
   });
 
-  for (var i = 0; i < data.locations.length; i++) {
+  for (var i = 0; i < data.locations().length; i++) {
     var marker = new google.maps.Marker({
-      position: data.locations[i].coordinates,
+      position: data.locations()[i].coordinates,
       map: map
     });
   }
