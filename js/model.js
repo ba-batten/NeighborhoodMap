@@ -34,4 +34,6 @@ function appViewModel() {
   };
 };
 
-ko.applyBindings(new appViewModel());
+var data = new appViewModel();
+
+ko.applyBindings(data);
