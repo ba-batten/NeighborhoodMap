@@ -5,7 +5,6 @@ function appViewModel() {
     {name: 'North Carolina Museum of History', coordinates: {lat: 35.782099, lng: -78.638474}},
     {name: 'Duke Energy Center For the Performing Arts', coordinates: {lat: 35.771489, lng: -78.639576}},
     {name: 'Marbles Kids Museum', coordinates: {lat: 35.778561, lng: -78.635999}},
-    {name: 'Raleigh Memorial Auditorium', coordinates: {lat: 35.771574, lng: -78.639618}},
     {name: 'Red Hat Amphitheater', coordinates: {lat: 35.774001, lng: -78.643109}},
     {name: 'Lincoln Theatre', coordinates: {lat: 35.773950, lng: -78.637180}},
     {name: 'The Pour House Music Hall', coordinates: {lat: 35.777405, lng: -78.636849}},
@@ -20,8 +19,7 @@ function appViewModel() {
     {name: 'Capital Building', coordinates: {lat: 35.780425, lng: -78.638967}},
     {name: 'Legislative Building', coordinates: {lat: 35.783170, lng: -78.638931}},
     {name: 'Raleigh Times', coordinates: {lat: 35.778060, lng: -78.638655}},
-    {name: 'Big Ed\'s City Market Restaurant', coordinates: {lat: 35.776264, lng: -78.635989}},
-    {name: 'Raleigh Memorial Auditorium', coordinates: {lat: 35.771313, lng: -78.639607}}
+    {name: 'Big Ed\'s City Market Restaurant', coordinates: {lat: 35.776264, lng: -78.635989}}
   ]
   this.siteName = ko.observable("Get to Know Downtown Raleigh");
 
