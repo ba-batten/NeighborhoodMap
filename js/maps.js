@@ -10,7 +10,8 @@ function initMap() {
   for (var i = 0; i < data.locations().length; i++) {
     var marker = new google.maps.Marker({
       position: data.locations()[i].coordinates,
-      map: map
+      map: map,
+      animation: google.maps.Animation.DROP,
     });
   }
 
