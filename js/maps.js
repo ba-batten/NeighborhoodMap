@@ -284,12 +284,34 @@ function initMap() {
     ]
   });
 
+  var markers = [];
+
+  var infoWindow = new google.maps.InfoWindow();
+
   for (var i = 0; i < data.locations().length; i++) {
+    var item = data.locations()[i];
     var marker = new google.maps.Marker({
-      position: data.locations()[i].coordinates,
+      position: item.coordinates,
       map: map,
+      name: item.name,
       animation: google.maps.Animation.DROP,
     });
+
+    markers.push(marker);
+
+    marker.addListener('click', function() {
+      populateInfoWindow(this, infoWindow);
+    })
+  }
+
+  function populateInfoWindow(marker, infoWindow) {
+    // close open infoWindow
+    infoWindow.close();
+
+    // set content and location of infoWindow
+    infoWindow.setContent(marker.name);
+    infoWindow.setPosition(marker.position);
+    infoWindow.open(map, marker);
   }
 
 };
