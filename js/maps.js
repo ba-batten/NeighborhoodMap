@@ -289,6 +289,7 @@ function initMap() {
 
   var markers = [];
 
+  // Creates a single infowindow that will be used with on the markers
   var infoWindow = new google.maps.InfoWindow();
 
   // Set default icon color
@@ -310,20 +311,23 @@ function initMap() {
 
     markers.push(marker);
 
-    //
+    // Adds content to the infowindow
     marker.addListener('click', function() {
       populateInfoWindow(this, infoWindow);
     });
 
+    // Highlights marker when mouse is hovering over it
     marker.addListener('mouseover', function() {
       this.setIcon(highlightedIcon);
     });
 
+    // Changes marker color to the default
     marker.addListener('mouseout', function() {
       this.setIcon(defaultIcon);
     });
   }
 
+  // Adds content to the infowindow
   function populateInfoWindow(marker, infoWindow) {
     // close open infoWindow
     infoWindow.close();
@@ -333,7 +337,8 @@ function initMap() {
     infoWindow.setPosition(marker.position);
     infoWindow.open(map, marker);
   }
-
+  
+  // Creates custom marker
   function makeMarkerIcon(color) {
     var markerImage = new google.maps.MarkerImage(
       'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ color +
