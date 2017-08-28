@@ -1,7 +1,10 @@
 function initMap() {
-  var data = new appViewModel
+  // var data = new appViewModel
+
+  // Downtown Raleigh coordinates
   var raleigh = {lat: 35.779918, lng: -78.638523};
 
+  // Create map
   var map = new google.maps.Map(document.getElementById('map'),
   {
     center: raleigh,
@@ -288,20 +291,37 @@ function initMap() {
 
   var infoWindow = new google.maps.InfoWindow();
 
+  // Set default icon color
+  var defaultIcon = makeMarkerIcon('39CCCC');
+
+  // Set color for highlighted icons
+  var highlightedIcon = makeMarkerIcon('FFDC00');
+
+  // Place a marker at each location
   for (var i = 0; i < data.locations().length; i++) {
     var item = data.locations()[i];
     var marker = new google.maps.Marker({
       position: item.coordinates,
       map: map,
       name: item.name,
+      icon: defaultIcon,
       animation: google.maps.Animation.DROP,
     });
 
     markers.push(marker);
 
+    //
     marker.addListener('click', function() {
       populateInfoWindow(this, infoWindow);
-    })
+    });
+
+    marker.addListener('mouseover', function() {
+      this.setIcon(highlightedIcon);
+    });
+
+    marker.addListener('mouseout', function() {
+      this.setIcon(defaultIcon);
+    });
   }
 
   function populateInfoWindow(marker, infoWindow) {
@@ -312,6 +332,17 @@ function initMap() {
     infoWindow.setContent(marker.name);
     infoWindow.setPosition(marker.position);
     infoWindow.open(map, marker);
+  }
+
+  function makeMarkerIcon(color) {
+    var markerImage = new google.maps.MarkerImage(
+      'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ color +
+      '|40|_|%E2%80%A2',
+      new google.maps.Size(21, 34),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(10, 34),
+      new google.maps.Size(21, 34));
+    return markerImage;
   }
 
 };
