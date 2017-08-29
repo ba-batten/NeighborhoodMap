@@ -1,5 +1,7 @@
 function appViewModel() {
-  this.locations = ko.observableArray([
+  var self = this;
+
+  self.locations = ko.observableArray([
     {name: 'Artspace Visual Arts center', coordinates: {lat: 35.775900, lng: -78.636262}},
     {name: 'Bad Daddy\'s', coordinates: {lat: 35.788892, lng: -78.639772}},
     {name: 'Big Ed\'s City Market Restaurant', coordinates: {lat: 35.776264, lng: -78.635989}},
@@ -22,14 +24,24 @@ function appViewModel() {
     {name: '42nd Street Oyster Bar', coordinates: {lat: 35.783043, lng: -78.646084}}
   ]);
 
-  this.siteName = ko.observable("Get to Know Downtown Raleigh");
+  self.markers = [];
 
-  this.openNav = function() {
+  self.siteName = ko.observable("Get to Know Downtown Raleigh");
+
+  self.openNav = function() {
     document.getElementById('info-box').style.width = '100%';
   };
 
-  this.closeNav = function() {
+  self.closeNav = function() {
     document.getElementById('info-box').style.width = '0%';
+  };
+
+  self.matchToMarker = function(location){
+    for (var i = 0; i < self.markers.length; i++){
+      if (location === self.markers[i].name){
+        google.maps.event.trigger(self.markers[i],'click');
+      }
+    }
   };
 };
 

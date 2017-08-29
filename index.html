@@ -25,14 +25,14 @@
         <hr>
 
         <ul data-bind="foreach: locations">
-          <li><a href="#" data-bind="text: name"></a></li>
+          <li><a href="#" data-bind="text: name, click: $root.matchToMarker(name)"></a></li>
         </ul>
 
     </section>
 
     <section id="map"></section>
-    <script src="js/model.js" type="text/javascript" async defer></script>
     <script src="js/maps.js" type="text/javascript" async defer></script>
+    <script src="js/model.js" type="text/javascript" async defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1M9J_w7JXTULSo3lb0-kZN46iQuxeccU&callback=initMap"
     async defer></script>
   </body>
