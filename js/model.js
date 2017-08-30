@@ -61,6 +61,7 @@ function appViewModel() {
           loc.marker.setVisible(true);
         }
       });
+      return self.locations();
     }
     else {
       return ko.utils.arrayFilter(self.locations(), function(loc) {
