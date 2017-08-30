@@ -307,7 +307,11 @@ function initMap() {
       animation: google.maps.Animation.DROP,
     });
 
+    // Add marker to markers[] array
     data.markers.push(marker);
+
+    // Add marker to locations
+    data.locations()[i].marker = marker;
 
     // Adds content to the infowindow
     marker.addListener('click', function() {

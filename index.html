@@ -17,14 +17,11 @@
       <a href="javascript:void(0)" class="closebtn" data-bind="click: closeNav">&times;</a>
 
       <div class="info-box-content">
-        <form class="search-form">
-          <input type="text"></input>
-          <button>Filter</button>
-        </form>
+          <input type="text" class="filter-box" data-bind="textInput: filter, valueUpdate: 'afterkeydown'"></input>
 
         <hr>
 
-        <ul data-bind="foreach: locations">
+        <ul data-bind="foreach: locations" class="loc-list">
           <li><a href="#" data-bind="text: name, click: $root.matchToMarker(name)"></a></li>
         </ul>
 

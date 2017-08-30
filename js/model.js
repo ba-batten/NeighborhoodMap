@@ -1,6 +1,7 @@
 function appViewModel() {
   var self = this;
 
+  // data for each location
   self.locations = ko.observableArray([
     {name: 'Artspace Visual Arts center', coordinates: {lat: 35.775900, lng: -78.636262}},
     {name: 'Bad Daddy\'s', coordinates: {lat: 35.788892, lng: -78.639772}},
@@ -24,18 +25,22 @@ function appViewModel() {
     {name: '42nd Street Oyster Bar', coordinates: {lat: 35.783043, lng: -78.646084}}
   ]);
 
+  // Array of all markers
   self.markers = [];
 
   self.siteName = ko.observable("Get to Know Downtown Raleigh");
 
+  // Open the list view, used on smaller screens
   self.openNav = function() {
     document.getElementById('info-box').style.width = '100%';
   };
 
+  // Close the list view, used on smaller screens
   self.closeNav = function() {
     document.getElementById('info-box').style.width = '0%';
   };
 
+  // Match items in .loc-list to their corresponding marker
   self.matchToMarker = function(location){
     for (var i = 0; i < self.markers.length; i++){
       if (location === self.markers[i].name){
@@ -43,6 +48,33 @@ function appViewModel() {
       }
     }
   };
+
+  // Attribute to http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
+  // Attribut to https://discussions.udacity.com/t/neighborhood-map-help-with-filter-please/253771
+  // Filters list of locations
+  self.filter = ko.observable('');
+  self.filteredLocs = ko.computed(function() {
+    var filter = self.filter().toLowerCase();
+    if (!filter) {
+      self.locations().forEach(function(loc) {
+        if (loc.marker) {
+          loc.marker.setVisible(true);
+        }
+      });
+    }
+    else {
+      return ko.utils.arrayFilter(self.locations(), function(loc) {
+        if (loc.name.toLowerCase().indexOf(filter) > -1) {
+          loc.marker.setVisible(true);
+          return true;
+        }
+        else {
+          loc.marker.setVisible(false);
+          return false;
+        }
+      });
+    }
+  }, self);
 };
 
 var data = new appViewModel();
