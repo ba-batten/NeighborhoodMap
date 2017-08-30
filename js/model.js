@@ -56,11 +56,11 @@ function appViewModel() {
   self.filteredLocs = ko.computed(function() {
     var filter = self.filter().toLowerCase();
     if (!filter) {
-      self.locations().forEach(function(loc) {
-        if (loc.marker) {
-          loc.marker.setVisible(true);
+      for (var i = 0; i < self.locations().length; i++) {
+        if (self.locations()[i].marker) {
+          self.locations()[i].marker.setVisible(true);
         }
-      });
+      }
       return self.locations();
     }
     else {
