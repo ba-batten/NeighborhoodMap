@@ -1,5 +1,18 @@
 function initMap() {
-  // var data = new appViewModel
+
+  function ajaxReq(loc) {
+    // Foursquare API parameter variables
+    var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
+    var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
+    var v = "20160830";
+    var lat = loc.coordinates.lat;
+    var lng = loc.coordinates.lng;
+    var foursquareURL = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," + lng + "&client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v;
+
+    var results = $.getJSON(foursquareURL);
+
+    return results;
+  };
 
   // Downtown Raleigh coordinates
   var raleigh = {lat: 35.779918, lng: -78.638523};
@@ -298,20 +311,37 @@ function initMap() {
 
   // Place a marker at each location
   for (var i = 0; i < data.locations().length; i++) {
+    // variables
+    var phone, address, markerURL;
     var item = data.locations()[i];
     var marker = new google.maps.Marker({
       position: item.coordinates,
       map: map,
       name: item.name,
       icon: defaultIcon,
-      animation: google.maps.Animation.DROP,
+      animation: google.maps.Animation.DROP
     });
 
-    // Add marker to markers[] array
-    data.markers.push(marker);
+    // Foursquare API parameter variables
+    var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
+    var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
+    var v = "20160830";
+    var lat = data.locations()[i].coordinates.lat;
+    var lng = data.locations()[i].coordinates.lng;
+    var foursquareURL = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," +
+      lng + "&client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v;
+
+    // AJAX request to get info from Foursquare and parse data
+    $.getJSON(foursquareURL, function(data) {
+      var results = data.response.venues[0];
+
+      phone = results.contact.formattedPhone;
+      address = results.location.address + " " + results.location.city + ", " +
+        results.location.state + " " + results.location.postalCode;
+      markerURL = results.url;
+    });
 
     // Add marker to locations
-    data.locations()[i].marker = marker;
 
     // Adds content to the infowindow
     marker.addListener('click', function() {
@@ -327,6 +357,8 @@ function initMap() {
     marker.addListener('mouseout', function() {
       this.setIcon(defaultIcon);
     });
+
+    data.locations()[i].marker = marker;
   }
 
   // Adds content to the infowindow
@@ -334,8 +366,18 @@ function initMap() {
     // close open infoWindow
     infoWindow.close();
 
+    // Create infoWindow content
+    var content = "<div>" +
+      "<ul>" +
+        "<li>" + marker.name + "</li>" +
+        "<li>" + marker.phone + "</li>" +
+        "<li>" + marker.address + "</li>" +
+        "<li>" + marker.URL + "</li>" +
+      "</ul>" +
+    "</div>"
+
     // set content and location of infoWindow
-    infoWindow.setContent(marker.name);
+    infoWindow.setContent(content);
     infoWindow.setPosition(marker.position);
     infoWindow.open(map, marker);
   }

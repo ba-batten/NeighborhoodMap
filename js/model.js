@@ -3,26 +3,24 @@ function appViewModel() {
 
   // data for each location
   self.locations = ko.observableArray([
-    {name: 'Artspace Visual Arts center', coordinates: {lat: 35.775900, lng: -78.636262}},
-    {name: 'Bad Daddy\'s', coordinates: {lat: 35.788892, lng: -78.639772}},
-    {name: 'Big Ed\'s City Market Restaurant', coordinates: {lat: 35.776264, lng: -78.635989}},
-    {name: 'Beasley\'s Chicken+Honey', coordinates: {lat: 35.777337, lng: -78.638076}},
-    {name: 'Duke Energy Center For the Performing Arts', coordinates: {lat: 35.771489, lng: -78.639576}},
-    {name: 'Capital Building', coordinates: {lat: 35.780425, lng: -78.638967}},
-    {name: 'Flying Saucer Draght Emporium', coordinates: {lat: 35.779970, lng: -78.644816}},
-    {name: 'Krispy Kreme Doughnuts', coordinates: {lat: 35.788303, lng: -78.634687}},
-    {name: 'Lincoln Theatre', coordinates: {lat: 35.773950, lng: -78.637180}},
-    {name: 'Legislative Building', coordinates: {lat: 35.783170, lng: -78.638931}},
-    {name: 'Marbles Kids Museum', coordinates: {lat: 35.778561, lng: -78.635999}},
-    {name: 'Nature Research center', coordinates: {lat: 35.782394, lng: -78.640928}},
-    {name: 'North Carolina Museum of History', coordinates: {lat: 35.782099, lng: -78.638474}},
-    {name: 'North Carolina Museum of Natural Sciences', coordinates: {lat: 35.782452, lng: -78.639524}},
-    {name: 'Red Hat Amphitheater', coordinates: {lat: 35.774001, lng: -78.643109}},
-    {name: 'State of Beer', coordinates: {lat: 35.780326, lng: -78.645317}},
-    {name: 'The Pour House Music Hall', coordinates: {lat: 35.777405, lng: -78.636849}},
-    {name: 'The Pit Authentic Barbecue', coordinates: {lat: 35.776285, lng: -78.644758}},
-    {name: 'Raleigh Times', coordinates: {lat: 35.778060, lng: -78.638655}},
-    {name: '42nd Street Oyster Bar', coordinates: {lat: 35.783043, lng: -78.646084}}
+    {name: 'Artspace Visual Arts center', coordinates: {lat: 35.77563, lng: -78.63626199999999}},
+    {name: 'Bad Daddy\'s', coordinates: {lat: 35.78859600000001, lng: -78.639772}},
+    {name: 'Big Ed\'s City Market Restaurant', coordinates: {lat: 35.7760814, lng: -78.6360027}},
+    {name: 'Beasley\'s Chicken + Honey', coordinates: {lat: 35.77705, lng: -78.63803300000001}},
+    {name: 'Flying Saucer Draught Emporium', coordinates: {lat: 35.7799437, lng: -78.64481569999998}},
+    {name: 'Krispy Kreme Doughnuts', coordinates: {lat: 35.788042, lng: -78.634687}},
+    {name: 'Lincoln Theatre', coordinates: {lat: 35.773854, lng: -78.63741600000003}},
+    {name: 'Marbles Kids Museum', coordinates: {lat: 35.7783611, lng: -78.63597779999998}},
+    {name: 'North Carolina Museum of History', coordinates: {lat: 35.781864, lng: -78.638485}},
+    {name: 'North Carolina Museum of Natural Sciences', coordinates: {lat: 35.7824028, lng: -78.64089589999998}},
+    {name: 'North Carolina State Capital', coordinates: {lat: 35.7804132, lng: -78.6389428}},
+    {name: 'North Carolina State Legislative Building', coordinates: {lat: 35.7831443, lng: -78.638931}},
+    {name: 'Red Hat Amphitheater', coordinates: {lat: 35.7738011, lng: -78.64308740000001}},
+    {name: 'State of Beer', coordinates: {lat: 35.7803, lng: -78.64531699999998}},
+    {name: 'The Pit Authentic Barbecue', coordinates: {lat: 35.77603300000001, lng: -78.64471500000002}},
+    {name: 'Raleigh Memorial Auditorium', coordinates: {lat: 35.77121899999999, lng: -78.63957640000001}},
+    {name: 'The Raleigh Times Bar', coordinates: {lat: 35.7779993, lng: -78.63863379999998}},
+    {name: '42nd Street Oyster Bar', coordinates: {lat: 35.7829907, lng: -78.6460515}}
   ]);
 
   // Array of all markers
