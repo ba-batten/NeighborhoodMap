@@ -310,41 +310,20 @@ function initMap() {
   var highlightedIcon = makeMarkerIcon('FFDC00');
 
   // Place a marker at each location
-  for (var i = 0; i < data.locations().length; i++) {
+  data.locations().forEach(function(location){
     // variables
-    var item = data.locations()[i];
+    // var item = data.locations()[i];
     var marker = new google.maps.Marker({
-      position: item.coordinates,
+      position: location.coordinates,
       map: map,
-      name: item.name,
+      name: location.name,
       icon: defaultIcon,
       animation: google.maps.Animation.DROP
     });
-    console.log(marker);
-
-    // Foursquare API parameter variables
-    // var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
-    // var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
-    // var v = "20160830";
-    // var lat = data.locations()[i].coordinates.lat;
-    // var lng = data.locations()[i].coordinates.lng;
-    // var foursquareURL = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," +
-    //   lng + "&client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v;
-
-    // AJAX request to get info from Foursquare and parse data
-    // $.getJSON(foursquareURL).done(function(data) {
-    //   var results = data.response.venues[0];
-
-      // phone = results.contact.formattedPhone;
-      // address = results.location.address + " " + results.location.city + ", " +
-      //   results.location.state + " " + results.location.postalCode;
-      // markerURL = results.url;
-      // console.log();
-    // });
 
     // Adds content to the infowindow
     marker.addListener('click', function() {
-        populateInfoWindow(this, infoWindow, item);
+      populateInfoWindow(this, infoWindow, location);
     });
 
     // Highlights marker when mouse is hovering over it
@@ -358,8 +337,9 @@ function initMap() {
     });
 
     // Add marker to locations
-    data.locations()[i].marker = marker;
-  }
+    location.marker = marker;
+    }
+  );
 
   // Adds content to the infowindow
   function populateInfoWindow(marker, infoWindow, loc) {
@@ -367,7 +347,7 @@ function initMap() {
     infoWindow.close();
 
     // Foursquare API parameter variables
-    var phone, address, markerURL;
+    var phone, address, city, state, postalCode, markerURL;
     var mapsKey = "AIzaSyC1M9J_w7JXTULSo3lb0-kZN46iQuxeccU";
     var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
     var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
@@ -377,23 +357,26 @@ function initMap() {
     var foursquareURL = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," +
       lng + "&client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v;
     var mapsURL = "https://maps.googleapis.com/maps/api/streetview?size=150x100&location=" + lat + "," +
-      lng + "&fov=90&pitch=10&key=" + mapsKey;
+      lng + "&fov=100&pitch=10&key=" + mapsKey;
 
     // AJAX request to get info from Foursquare and parse data
     $.getJSON(foursquareURL).done(function(data) {
       var results = data.response.venues[0];
 
-      phone = results.contact.formattedPhone.toString();
-      address = results.location.address.toString() + " " + results.location.city.toString() + ", " +
-        results.location.state.toString() + " " + results.location.postalCode.toString();
+      phone = results.contact.formattedPhone;
+      address = results.location.address
+      city = results.location.city
+      state = results.location.state
+      postalCode = results.location.postalCode;
       markerURL = results.url;
-      console.log(phone);
+
       // Create infoWindow content
       var content = "<div><img src=\"" + mapsURL + "\">" +
         "<ul>" +
-        "<li>" + marker.name + "</li>" +
-        "<li>" + phone + "</li>" +
+        "<li><h4>" + marker.name + "</h4></li>" +
         "<li>" + address + "</li>" +
+        "<li>" + city + ", " + state + " " + postalCode + "</li>" +
+        "<li><a href=\"tel:" + phone + "\">" + phone + "</a></li>" +
         "<li><a href=\"" + markerURL + "\" target=blank>" + markerURL + "</a></li>" +
         "</ul>" +
         "</div>"
