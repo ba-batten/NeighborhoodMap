@@ -48,7 +48,6 @@ function appViewModel() {
   };
 
   // Attribute to http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
-  // Attribut to https://discussions.udacity.com/t/neighborhood-map-help-with-filter-please/253771
   // Filters list of locations
   self.filter = ko.observable('');
   self.filteredLocs = ko.computed(function() {

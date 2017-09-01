@@ -1,18 +1,18 @@
 function initMap() {
 
-  function ajaxReq(loc) {
-    // Foursquare API parameter variables
-    var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
-    var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
-    var v = "20160830";
-    var lat = loc.coordinates.lat;
-    var lng = loc.coordinates.lng;
-    var foursquareURL = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," + lng + "&client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v;
-
-    var results = $.getJSON(foursquareURL);
-
-    return results;
-  };
+  // function ajaxReq(loc) {
+  //   // Foursquare API parameter variables
+  //   var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
+  //   var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
+  //   var v = "20160830";
+  //   var lat = loc.coordinates.lat;
+  //   var lng = loc.coordinates.lng;
+  //   var foursquareURL = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," + lng + "&client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v;
+  //
+  //   var results = $.getJSON(foursquareURL);
+  //
+  //   return results;
+  // };
 
   // Downtown Raleigh coordinates
   var raleigh = {lat: 35.779918, lng: -78.638523};
@@ -312,7 +312,6 @@ function initMap() {
   // Place a marker at each location
   for (var i = 0; i < data.locations().length; i++) {
     // variables
-    var phone, address, markerURL;
     var item = data.locations()[i];
     var marker = new google.maps.Marker({
       position: item.coordinates,
@@ -321,31 +320,31 @@ function initMap() {
       icon: defaultIcon,
       animation: google.maps.Animation.DROP
     });
+    console.log(marker);
 
     // Foursquare API parameter variables
-    var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
-    var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
-    var v = "20160830";
-    var lat = data.locations()[i].coordinates.lat;
-    var lng = data.locations()[i].coordinates.lng;
-    var foursquareURL = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," +
-      lng + "&client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v;
+    // var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
+    // var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
+    // var v = "20160830";
+    // var lat = data.locations()[i].coordinates.lat;
+    // var lng = data.locations()[i].coordinates.lng;
+    // var foursquareURL = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," +
+    //   lng + "&client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v;
 
     // AJAX request to get info from Foursquare and parse data
-    $.getJSON(foursquareURL, function(data) {
-      var results = data.response.venues[0];
+    // $.getJSON(foursquareURL).done(function(data) {
+    //   var results = data.response.venues[0];
 
-      phone = results.contact.formattedPhone;
-      address = results.location.address + " " + results.location.city + ", " +
-        results.location.state + " " + results.location.postalCode;
-      markerURL = results.url;
-    });
-
-    // Add marker to locations
+      // phone = results.contact.formattedPhone;
+      // address = results.location.address + " " + results.location.city + ", " +
+      //   results.location.state + " " + results.location.postalCode;
+      // markerURL = results.url;
+      // console.log();
+    // });
 
     // Adds content to the infowindow
     marker.addListener('click', function() {
-      populateInfoWindow(this, infoWindow);
+        populateInfoWindow(this, infoWindow, item);
     });
 
     // Highlights marker when mouse is hovering over it
@@ -358,28 +357,55 @@ function initMap() {
       this.setIcon(defaultIcon);
     });
 
+    // Add marker to locations
     data.locations()[i].marker = marker;
   }
 
   // Adds content to the infowindow
-  function populateInfoWindow(marker, infoWindow) {
+  function populateInfoWindow(marker, infoWindow, loc) {
     // close open infoWindow
     infoWindow.close();
 
-    // Create infoWindow content
-    var content = "<div>" +
-      "<ul>" +
-        "<li>" + marker.name + "</li>" +
-        "<li>" + marker.phone + "</li>" +
-        "<li>" + marker.address + "</li>" +
-        "<li>" + marker.URL + "</li>" +
-      "</ul>" +
-    "</div>"
+    // Foursquare API parameter variables
+    var phone, address, markerURL;
+    var mapsKey = "AIzaSyC1M9J_w7JXTULSo3lb0-kZN46iQuxeccU";
+    var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
+    var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
+    var v = "20160830";
+    var lat = loc.coordinates.lat.toString();
+    var lng = loc.coordinates.lng.toString();
+    var foursquareURL = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," +
+      lng + "&client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v;
+    var mapsURL = "https://maps.googleapis.com/maps/api/streetview?size=150x100&location=" + lat + "," +
+      lng + "&fov=90&pitch=10&key=" + mapsKey;
 
-    // set content and location of infoWindow
-    infoWindow.setContent(content);
-    infoWindow.setPosition(marker.position);
-    infoWindow.open(map, marker);
+    // AJAX request to get info from Foursquare and parse data
+    $.getJSON(foursquareURL).done(function(data) {
+      var results = data.response.venues[0];
+
+      phone = results.contact.formattedPhone.toString();
+      address = results.location.address.toString() + " " + results.location.city.toString() + ", " +
+        results.location.state.toString() + " " + results.location.postalCode.toString();
+      markerURL = results.url;
+      console.log(phone);
+      // Create infoWindow content
+      var content = "<div><img src=\"" + mapsURL + "\">" +
+        "<ul>" +
+        "<li>" + marker.name + "</li>" +
+        "<li>" + phone + "</li>" +
+        "<li>" + address + "</li>" +
+        "<li><a href=\"" + markerURL + "\" target=blank>" + markerURL + "</a></li>" +
+        "</ul>" +
+        "</div>"
+
+      // set content and location of infoWindow
+      infoWindow.setContent(content);
+      infoWindow.setPosition(marker.position);
+      infoWindow.open(map, marker);
+    }).fail(function(){
+      alert('Foursquare is out to lunch.  Refresh and try again.')
+    });
+
   }
 
 
