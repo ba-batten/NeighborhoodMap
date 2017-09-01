@@ -422,3 +422,7 @@ function initMap() {
   }
 
 };
+
+function mapsError() {
+  alert("Google Maps is taking a smoke break.  Refresh and try again");
+}
