@@ -3,7 +3,7 @@ function appViewModel() {
 
   // data for each location
   self.locations = ko.observableArray([
-    {name: 'Artspace Visual Arts center', coordinates: {lat: 35.77563, lng: -78.63626199999999}},
+    {name: 'Artspace Visual Arts Center', coordinates: {lat: 35.77563, lng: -78.63626199999999}},
     {name: 'Bad Daddy\'s', coordinates: {lat: 35.78859600000001, lng: -78.639772}},
     {name: 'Big Ed\'s City Market Restaurant', coordinates: {lat: 35.7760814, lng: -78.6360027}},
     {name: 'Beasley\'s Chicken + Honey', coordinates: {lat: 35.77705, lng: -78.63803300000001}},
