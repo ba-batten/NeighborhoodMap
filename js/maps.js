@@ -310,8 +310,8 @@ function initMap() {
     // Foursquare API parameter variables
     var phone, address, city, state, postalCode, markerURL;
     var mapsKey = "AIzaSyC1M9J_w7JXTULSo3lb0-kZN46iQuxeccU";
-    var client_id = "GCGFZLHFZD5V45L3AHPHIVUTFO5I4NVWCSKCCQEOXXS30CCS";
-    var client_secret = "WSYUL5VCJCSQNINMQPCAHF0UEDKLGH2VC3FNMJ1BAN5VIUXB";
+    var client_id = "BTC3ZL4HXRG5ZHRYD4MKHDNL5USTZ4FZOPQFMHY41XZD4OXP";
+    var client_secret = "KFT5K3C4TLAPCK3ONIZEDFO2Y1B5QFNDR35OWMN0D4X4CBJW";
     var v = "20160830";
     var lat = location.coordinates.lat.toString();
     var lng = location.coordinates.lng.toString();
@@ -330,6 +330,18 @@ function initMap() {
       marker.state = results.location.state
       marker.postalCode = results.location.postalCode;
       marker.markerURL = results.url;
+
+      // marker.id will be used for a second AJAX request in order to get a picture of the location
+      marker.id = results.id;
+
+      var picturesURL = "https://api.foursquare.com/v2/venues/" + marker.id + "/photos?" +
+        "client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v + "&limit=1";
+
+      // Second AJAX request to get a picture of the location
+      $.getJSON(picturesURL).done(function(data) {
+        marker.photos = data.response.photos.items;
+        marker.profilePhoto = marker.photos[0].prefix + "100" + marker.photos[0].suffix;
+      }).fail(function(){alert('No pictures this time.  Refresh and try again')});
     })
     // .fail(function(){
     //   alert('Foursquare is out to lunch.  Refresh and try again.')
@@ -365,7 +377,7 @@ function initMap() {
 
 
       // Create infoWindow content
-      var content = "<div><img src=\"" + marker.mapsURL + "\" class=\"info-img\">" +
+      var content = "<div><img src=\"" + marker.profilePhoto + "\" class=\"info-img\" style=\"width: 150px\">" +
         "<ul class=\"info-list\">" +
         "<li><h4>" + marker.name + "</h4></li>" +
         "<li>" + marker.address + "</li>" +

@@ -14,7 +14,6 @@ function appViewModel() {
     {name: 'North Carolina Museum of History', coordinates: {lat: 35.781864, lng: -78.638485}},
     {name: 'North Carolina Museum of Natural Sciences', coordinates: {lat: 35.7824028, lng: -78.64089589999998}},
     {name: 'North Carolina State Capital', coordinates: {lat: 35.7804132, lng: -78.6389428}},
-    {name: 'North Carolina State Legislative Building', coordinates: {lat: 35.7831443, lng: -78.638931}},
     {name: 'Red Hat Amphitheater', coordinates: {lat: 35.7738011, lng: -78.64308740000001}},
     {name: 'State of Beer', coordinates: {lat: 35.7803, lng: -78.64531699999998}},
     {name: 'The Pit Authentic Barbecue', coordinates: {lat: 35.77603300000001, lng: -78.64471500000002}},

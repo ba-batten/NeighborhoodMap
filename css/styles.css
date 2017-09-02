@@ -93,6 +93,11 @@ body {
   background: #555;
 }
 
+.loc-list-item:active, .loc-list-a:active {
+  background: #999;
+  color: #555;
+}
+
 .loc-list-a {
   color: white;
   text-decoration: none;
