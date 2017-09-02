@@ -340,7 +340,7 @@ function initMap() {
       // Second AJAX request to get a picture of the location
       $.getJSON(picturesURL).done(function(data) {
         marker.photos = data.response.photos.items;
-        marker.profilePhoto = marker.photos[0].prefix + "100" + marker.photos[0].suffix;
+        marker.profilePhoto = marker.photos[0].prefix + 90 + marker.photos[0].suffix;
       }).fail(function(){alert('No pictures this time.  Refresh and try again')});
 
       var tipsURL = "https://api.foursquare.com/v2/venues/" + marker.id + "/tips?" +
@@ -384,13 +384,14 @@ function initMap() {
     infoWindow.close();
 
     // Create infoWindow content
-    var content = "<div><img src=\"" + marker.profilePhoto + "\" class=\"info-img\" style=\"width: 150px\">" +
+    var content = "<div><img src=\"" + marker.profilePhoto + "\" class=\"info-img\">" +
       "<ul class=\"info-list\">" +
       "<li><h4>" + marker.name + "</h4></li>" +
       "<li>" + marker.address + "</li>" +
       "<li>" + marker.city + ", " + marker.state + " " + marker.postalCode + "</li>" +
       "<li><a href=\"tel:" + marker.phone + "\">" + marker.phone + "</a></li>" +
       "<li><a href=\"" + marker.markerURL + "\" target=blank>" + marker.markerURL + "</a></li>" +
+      "<sub>Powered by Foursquare</sub>" +
       "</ul>" +
       "</div>"
 
