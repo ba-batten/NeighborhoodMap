@@ -8,6 +8,36 @@ body {
   box-sizing: border-box;
 }
 
+#header {
+  height: 50px;
+  background: #212121;
+  transition: margin-left .5s;
+  text-align: center;
+}
+
+.hamburger {
+  padding: 0;
+  margin: 0;
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  float: left;
+}
+
+.page-title {
+  text-align: center;
+  color: white;
+  padding: 0;
+  margin: 0 auto;
+  display: inline;
+  position: relative;
+  top: 15%;
+  transform: translateY(-50%);
+}
+
 #map {
   height: 100vh;
   transition: margin-left .5s;
@@ -33,6 +63,27 @@ body {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+.closebtn {
+  color: white;
+  text-decoration: none;
+}
+
+.loc-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.loc-list-item {
+  margin: 10px 0;
+  font-size: 10px;
+}
+
+.loc-list-a {
+  color: white;
+  text-decoration: none;
 }
 
 @media screen and (max-height: 450px) {

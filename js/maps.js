@@ -330,9 +330,10 @@ function initMap() {
       marker.state = results.location.state
       marker.postalCode = results.location.postalCode;
       marker.markerURL = results.url;
-    }).fail(function(){
-      alert('Foursquare is out to lunch.  Refresh and try again.')
-    });
+    })
+    // .fail(function(){
+    //   alert('Foursquare is out to lunch.  Refresh and try again.')
+    // });
 
 
     // Adds content to the infowindow
