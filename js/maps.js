@@ -365,8 +365,8 @@ function initMap() {
 
 
       // Create infoWindow content
-      var content = "<div><img src=\"" + marker.mapsURL + "\">" +
-        "<ul>" +
+      var content = "<div><img src=\"" + marker.mapsURL + "\" class=\"info-img\">" +
+        "<ul class=\"info-list\">" +
         "<li><h4>" + marker.name + "</h4></li>" +
         "<li>" + marker.address + "</li>" +
         "<li>" + marker.city + ", " + marker.state + " " + marker.postalCode + "</li>" +
