@@ -30,12 +30,14 @@ function appViewModel() {
 
   // Open the list view, used on smaller screens
   self.openNav = function() {
-    document.getElementById('info-box').style.width = '100%';
+    document.getElementById('mySidenav').style.width = '250px';
+    document.getElementById('map').style.marginLeft = '250px';
   };
 
   // Close the list view, used on smaller screens
   self.closeNav = function() {
-    document.getElementById('info-box').style.width = '0%';
+    document.getElementById('mySidenav').style.width = '0';
+    document.getElementById('map').style.marginLeft = '0';
   };
 
   // Match items in .loc-list to their corresponding marker
