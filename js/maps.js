@@ -331,7 +331,7 @@ function initMap() {
       marker.postalCode = results.location.postalCode;
       marker.markerURL = results.url;
 
-      // marker.id will be used for a second AJAX request in order to get a picture of the location
+      // marker.id will be used for a for requests to get photos and tips
       marker.id = results.id;
 
       var picturesURL = "https://api.foursquare.com/v2/venues/" + marker.id + "/photos?" +
@@ -342,10 +342,18 @@ function initMap() {
         marker.photos = data.response.photos.items;
         marker.profilePhoto = marker.photos[0].prefix + "100" + marker.photos[0].suffix;
       }).fail(function(){alert('No pictures this time.  Refresh and try again')});
+
+      var tipsURL = "https://api.foursquare.com/v2/venues/" + marker.id + "/tips?" +
+        "client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v + "&limit=20";
+
+      // Third AJAX request to get a tips for the location
+      $.getJSON(tipsURL).done(function(data) {
+        marker.tips = data.response.tips.items;
+      }).fail(function(){alert('No pictures this time.  Refresh and try again')});
     })
-    // .fail(function(){
-    //   alert('Foursquare is out to lunch.  Refresh and try again.')
-    // });
+    .fail(function(){
+      alert('Foursquare is out to lunch.  Refresh and try again.')
+    });
 
 
     // Adds content to the infowindow
@@ -375,24 +383,21 @@ function initMap() {
     // close open infoWindow
     infoWindow.close();
 
+    // Create infoWindow content
+    var content = "<div><img src=\"" + marker.profilePhoto + "\" class=\"info-img\" style=\"width: 150px\">" +
+      "<ul class=\"info-list\">" +
+      "<li><h4>" + marker.name + "</h4></li>" +
+      "<li>" + marker.address + "</li>" +
+      "<li>" + marker.city + ", " + marker.state + " " + marker.postalCode + "</li>" +
+      "<li><a href=\"tel:" + marker.phone + "\">" + marker.phone + "</a></li>" +
+      "<li><a href=\"" + marker.markerURL + "\" target=blank>" + marker.markerURL + "</a></li>" +
+      "</ul>" +
+      "</div>"
 
-      // Create infoWindow content
-      var content = "<div><img src=\"" + marker.profilePhoto + "\" class=\"info-img\" style=\"width: 150px\">" +
-        "<ul class=\"info-list\">" +
-        "<li><h4>" + marker.name + "</h4></li>" +
-        "<li>" + marker.address + "</li>" +
-        "<li>" + marker.city + ", " + marker.state + " " + marker.postalCode + "</li>" +
-        "<li><a href=\"tel:" + marker.phone + "\">" + marker.phone + "</a></li>" +
-        "<li><a href=\"" + marker.markerURL + "\" target=blank>" + marker.markerURL + "</a></li>" +
-        "</ul>" +
-        "</div>"
-
-      // set content and location of infoWindow
-      infoWindow.setContent(content);
-      infoWindow.setPosition(marker.position);
-      infoWindow.open(map, marker);
-
-
+    // set content and location of infoWindow
+    infoWindow.setContent(content);
+    infoWindow.setPosition(marker.position);
+    infoWindow.open(map, marker);
   }
 
 
