@@ -295,6 +295,9 @@ function initMap() {
   // Set color for highlighted icons
   var highlightedIcon = makeMarkerIcon('FFDC00');
 
+  // Create variable to later use to set the map's bounds
+  var bounds = new google.maps.LatLngBounds();
+
   // Place a marker at each location
   data.locations().forEach(function(location){
     // variables
@@ -306,6 +309,10 @@ function initMap() {
       icon: defaultIcon,
       animation: google.maps.Animation.DROP
     });
+
+    // Extend the bounds of the map to include marker
+    bounds.extend(marker.position);
+    map.fitBounds(bounds);
 
     // Foursquare API parameter variables
     var phone, address, city, state, postalCode, markerURL;
