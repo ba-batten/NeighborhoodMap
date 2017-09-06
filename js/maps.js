@@ -345,11 +345,6 @@ function initMap() {
 
       var tipsURL = "https://api.foursquare.com/v2/venues/" + marker.id + "/tips?" +
         "client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v + "&limit=20";
-
-      // Third AJAX request to get a tips for the location
-      $.getJSON(tipsURL).done(function(data) {
-        marker.tips = data.response.tips.items;
-      }).fail(function(){alert('No pictures this time.  Refresh and try again')});
     })
     .fail(function(){
       alert('Foursquare is out to lunch.  Refresh and try again.')
