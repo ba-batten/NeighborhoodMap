@@ -84,7 +84,7 @@ function appViewModel() {
       });
     }
   }, self);
-};
+}
 
 var data = new appViewModel();
 

@@ -315,7 +315,6 @@ function initMap() {
     map.fitBounds(bounds);
 
     // Foursquare API parameter variables
-    var phone, address, city, state, postalCode, markerURL;
     var mapsKey = "AIzaSyC1M9J_w7JXTULSo3lb0-kZN46iQuxeccU";
     var client_id = "BTC3ZL4HXRG5ZHRYD4MKHDNL5USTZ4FZOPQFMHY41XZD4OXP";
     var client_secret = "KFT5K3C4TLAPCK3ONIZEDFO2Y1B5QFNDR35OWMN0D4X4CBJW";
@@ -332,9 +331,9 @@ function initMap() {
       var results = data.response.venues[0];
 
       marker.phone = results.contact.formattedPhone;
-      marker.address = results.location.address
-      marker.city = results.location.city
-      marker.state = results.location.state
+      marker.address = results.location.address;
+      marker.city = results.location.city;
+      marker.state = results.location.state;
       marker.postalCode = results.location.postalCode;
       marker.markerURL = results.url;
 
@@ -348,13 +347,9 @@ function initMap() {
       $.getJSON(picturesURL).done(function(data) {
         marker.photos = data.response.photos.items;
         marker.profilePhoto = marker.photos[0].prefix + 90 + marker.photos[0].suffix;
-      }).fail(function(){alert('No pictures this time.  Refresh and try again')});
-
-      var tipsURL = "https://api.foursquare.com/v2/venues/" + marker.id + "/tips?" +
-        "client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v + "&limit=20";
-    })
-    .fail(function(){
-      alert('Foursquare is out to lunch.  Refresh and try again.')
+      }).fail(function(){alert('No pictures this time.  Refresh and try again');
+    });}).fail(function(){
+      alert('Foursquare is out to lunch.  Refresh and try again.');
     });
 
 
@@ -395,7 +390,7 @@ function initMap() {
       "<li><a href=\"" + marker.markerURL + "\" target=blank>" + marker.markerURL + "</a></li>" +
       "<sub>Powered by Foursquare</sub>" +
       "</ul>" +
-      "</div>"
+      "</div>";
 
     // set content and location of infoWindow
     infoWindow.setContent(content);
@@ -415,8 +410,7 @@ function initMap() {
       new google.maps.Size(21, 34));
     return markerImage;
   }
-
-};
+}
 
 function mapsError() {
   alert("Google Maps is taking a smoke break.  Refresh and try again");
