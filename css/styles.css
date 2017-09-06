@@ -54,7 +54,7 @@ body {
   left: 0;
   background-color: #212121;
   overflow-x: hidden;
-  padding-top: 60px;
+  padding-top: 13px;
   transition: 0.5s;
 }
 
@@ -123,9 +123,9 @@ body {
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {
+  /*.sidenav {
     padding-top: 15px;
-  }
+  }*/
 }
 
 @media screen and (min-width: 750px) {
