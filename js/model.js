@@ -27,18 +27,26 @@ function appViewModel() {
 
   self.siteName = ko.observable("Get to Know Downtown Raleigh");
 
+  var open = false;
+
   // Open the list view, used on smaller screens
-  self.openNav = function() {
-    document.getElementById('mySidenav').style.width = '150px';
-    document.getElementById('map').style.marginLeft = '150px';
-    document.getElementById('header').style.marginLeft = '150px';
+  self.openCloseNav = function() {
+    if (open == false) {
+      document.getElementById('mySidenav').style.width = '150px';
+      document.getElementById('map').style.marginLeft = '150px';
+      document.getElementById('header').style.marginLeft = '150px';
+      open = true;
+    }
+    else {
+      document.getElementById('mySidenav').style.width = '0';
+      document.getElementById('map').style.marginLeft = '0';
+      document.getElementById('header').style.marginLeft = '0';
+      open = false;
+    }
   };
 
   // Close the list view, used on smaller screens
   self.closeNav = function() {
-    document.getElementById('mySidenav').style.width = '0';
-    document.getElementById('map').style.marginLeft = '0';
-    document.getElementById('header').style.marginLeft = '0';
   };
 
   // Match items in .loc-list to their corresponding marker
