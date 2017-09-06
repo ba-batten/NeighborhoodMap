@@ -358,7 +358,6 @@ function initMap() {
       populateInfoWindow(this, infoWindow, location);
       if ($(window).width() < 750) {
         data.openCloseNav();
-        console.log('something');
       }
     });
 
