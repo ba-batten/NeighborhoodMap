@@ -54,7 +54,7 @@ body {
   left: 0;
   background-color: #212121;
   overflow-x: hidden;
-  padding-top: 13px;
+  padding-top: 15px;
   transition: 0.5s;
 }
 
@@ -75,6 +75,7 @@ body {
   border: none;
   padding: 5px 3px;
   width: 100%;
+  border-radius: none;
 }
 
 .loc-list {
@@ -120,12 +121,6 @@ body {
 
 .info-list a {
   text-decoration: none;
-}
-
-@media screen and (max-height: 450px) {
-  /*.sidenav {
-    padding-top: 15px;
-  }*/
 }
 
 @media screen and (min-width: 750px) {
