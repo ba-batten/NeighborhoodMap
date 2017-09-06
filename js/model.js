@@ -45,10 +45,6 @@ function appViewModel() {
     }
   };
 
-  // Close the list view, used on smaller screens
-  self.closeNav = function() {
-  };
-
   // Match items in .loc-list to their corresponding marker
   self.matchToMarker = function(location){
     for (var i = 0; i < self.markers.length; i++){
