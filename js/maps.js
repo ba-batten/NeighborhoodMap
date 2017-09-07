@@ -395,10 +395,10 @@ function initMap() {
     var picList = "<ul class=\"pic-list\">";
 
     marker.photos.forEach(function(picture){
-      picList += "<li class=\"pic-list-item\"><img src=\"" + picture.prefix + 100 + picture.suffix + "\" class=\"info-img\">"
+      picList += "<li class=\"pic-list-item\"><img src=\"" + picture.prefix + 100 + picture.suffix + "\" class=\"info-img\">";
     });
 
-    picList += "</ul>"
+    picList += "</ul>";
 
     // Create infoWindow content
     var content = "<div>" +
