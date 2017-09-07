@@ -68,7 +68,7 @@ function appViewModel() {
   // Filters list of locations
   self.filter = ko.observable('');
   self.filteredLocs = ko.computed(function() {
-    var filter = self.filter().toLowerCase();
+    var filter = self.filter().toUpperCase();
     if (!filter) {
       for (var i = 0; i < self.locations().length; i++) {
         if (self.locations()[i].marker) {
@@ -79,7 +79,7 @@ function appViewModel() {
     }
     else {
       return ko.utils.arrayFilter(self.locations(), function(loc) {
-        if (loc.name.toLowerCase().indexOf(filter) > -1) {
+        if (loc.name.toUpperCase().indexOf(filter) > -1) {
           loc.marker.setVisible(true);
           return true;
         }
