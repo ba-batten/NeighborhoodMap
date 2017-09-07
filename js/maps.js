@@ -330,12 +330,23 @@ function initMap() {
     $.getJSON(foursquareURL).done(function(data) {
       var results = data.response.venues[0];
 
-      marker.phone = results.contact.formattedPhone;
       marker.address = results.location.address;
       marker.city = results.location.city;
       marker.state = results.location.state;
       marker.postalCode = results.location.postalCode;
-      marker.markerURL = results.url;
+      if (results.contact.formattedPhone) {
+        marker.phone = results.contact.formattedPhone;
+      }
+      else {
+        marker.phone = "";
+      }
+
+      if (results.url) {
+        marker.markerURL = results.url;
+      }
+      else {
+        marker.markerURL = "";
+      }
 
       // marker.id will be used for a for requests to get photos and tips
       marker.id = results.id;
