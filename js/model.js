@@ -27,11 +27,11 @@ function appViewModel() {
 
   self.siteName = ko.observable("Get to Know Downtown Raleigh");
 
-  var open = false;
+  self.open = ko.observable(false);
 
   // Open the list view, used on smaller screens
   self.openCloseNav = function() {
-    if (open == false) {
+    if (open === false) {
       document.getElementById('mySidenav').style.width = '150px';
       document.getElementById('map').style.marginLeft = '150px';
       document.getElementById('header').style.marginLeft = '150px';
@@ -50,6 +50,9 @@ function appViewModel() {
     for (var i = 0; i < self.markers.length; i++){
       if (location === self.markers[i].name){
         google.maps.event.trigger(self.markers[i],'click');
+        if ($(window).width() < 750 && data.open(true)) {
+          data.openCloseNav();
+        }
       }
     }
   };
