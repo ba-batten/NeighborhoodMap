@@ -341,7 +341,7 @@ function initMap() {
       marker.id = results.id;
 
       var picturesURL = "https://api.foursquare.com/v2/venues/" + marker.id + "/photos?" +
-        "client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v + "&limit=1";
+        "client_id=" + client_id + "&client_secret=" + client_secret + "&v=" + v + "&limit=3  ";
 
       // Second AJAX request to get a picture of the location
       $.getJSON(picturesURL).done(function(data) {
@@ -380,16 +380,26 @@ function initMap() {
     // close open infoWindow
     infoWindow.close();
 
+    // Create a list used to display 3 pictures of each location
+    var picList = "<ul class=\"pic-list\">";
+
+    marker.photos.forEach(function(picture){
+      picList += "<li class=\"pic-list-item\"><img src=\"" + picture.prefix + 100 + picture.suffix + "\" class=\"info-img\">"
+    });
+
+    picList += "</ul>"
+
     // Create infoWindow content
-    var content = "<div><img src=\"" + marker.profilePhoto + "\" class=\"info-img\">" +
+    var content = "<div>" +
+      picList +
       "<ul class=\"info-list\">" +
       "<li><h4>" + marker.name + "</h4></li>" +
       "<li>" + marker.address + "</li>" +
       "<li>" + marker.city + ", " + marker.state + " " + marker.postalCode + "</li>" +
       "<li><a href=\"tel:" + marker.phone + "\">" + marker.phone + "</a></li>" +
       "<li><a href=\"" + marker.markerURL + "\" target=blank>" + marker.markerURL + "</a></li>" +
-      "<sub>Powered by Foursquare</sub>" +
       "</ul>" +
+      "<p>Powered by Foursquare</p>" +
       "</div>";
 
     // set content and location of infoWindow
