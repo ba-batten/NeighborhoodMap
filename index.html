@@ -10,6 +10,7 @@
         margin: 0;
         padding: 0;
         font-family: sans-serif;
+        height: 100%;
       }
 
       body {
@@ -118,8 +119,25 @@
       .info-list {
         display: inline-block;
         padding: 0;
-        margin: 0 5px;
+        margin: 0;
         list-style-type: none;
+      }
+
+      .pic-list {
+        display: block;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      .pic-list-item {
+        display: inline-block;
+        margin-right: 2px;
+        width: calc((100%/3) - 2px);
+      }
+
+      .pic-list-item:last-of-type {
+        margin-right: 0;
       }
 
       .info-list h4 {
@@ -162,8 +180,6 @@
 
       <div class="info-box-content">
           <input type="text" class="filter-box" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" placeholder="Filter Locations">
-
-        <hr>
 
         <ul data-bind="foreach: filteredLocs" class="loc-list">
           <li class="loc-list-item"><a href="#" data-bind="text: name, click: $root.matchToMarker(name)" class="loc-list-a"></a></li>
