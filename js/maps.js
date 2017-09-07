@@ -356,9 +356,6 @@ function initMap() {
     // Adds content to the infowindow
     marker.addListener('click', function() {
       populateInfoWindow(this, infoWindow, location);
-      // if ($(window).width() < 750 && data.open(true)) {
-      //   data.openCloseNav();
-      // }
     });
 
     // Highlights marker when mouse is hovering over it
