@@ -16,6 +16,6 @@ Clone or download this repository and open index.html to view the site
 Maven - Dependency Management
 ROME - Used to generate RSS Feeds
 
-Acknowledgments
+## Acknowledgments
 
 Code for the location filter - http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
