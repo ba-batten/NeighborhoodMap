@@ -107,6 +107,12 @@ function initMap() {
     // close open infoWindow
     infoWindow.close();
 
+    // Animate marker
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function() {
+      marker.setAnimation(null);
+    }, 1440);
+
     // Create a list used to display 3 pictures of each location
     var picList = "<ul class=\"pic-list\">";
 
