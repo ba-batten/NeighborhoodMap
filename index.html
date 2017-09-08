@@ -3,170 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <!-- <link href="css/styles.css" type="text/css" rel="stylesheet"> -->
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
     <title>Downtown Raleigh Map</title>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-        height: 100%;
-      }
-
-      body {
-        box-sizing: border-box;
-      }
-
-      #header {
-        height: 50px;
-        background: #212121;
-        transition: margin-left .5s;
-        text-align: center;
-      }
-
-      .hamburger {
-        padding: 0;
-        margin: 0;
-        color: white;
-        text-decoration: none;
-        margin-left: 15px;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        float: left;
-      }
-
-      .page-title {
-        text-align: center;
-        font-size: 20px;
-        color: white;
-        padding: 0;
-        margin: 0 auto;
-        display: inline;
-        position: relative;
-        top: 25%;
-        transform: translateY(-50%);
-      }
-
-      #map {
-        height: calc(100vh - 90px);
-        transition: margin-left .5s;
-        padding: 20px;
-      }
-
-      .sidenav {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #212121;
-        overflow-x: hidden;
-        padding-top: 15px;
-        transition: 0.5s;
-      }
-
-      .sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-      }
-
-      .closebtn {
-        color: white;
-        text-decoration: none;
-      }
-
-      .filter-box {
-        padding: 5px 3px;
-        width: 100%;
-        border-radius: none;
-      }
-
-      .loc-list {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-      }
-
-      .loc-list-item {
-        margin: 10px 0;
-        font-size: 10px;
-        padding: 5px 3px;
-      }
-
-      .loc-list-item:hover, .loc-list-a:hover {
-        background: #555;
-      }
-
-      .loc-list-item:active, .loc-list-a:active {
-        background: #999;
-        color: #555;
-      }
-
-      .loc-list-a {
-        color: white;
-        text-decoration: none;
-      }
-
-      .info-img {
-        float: left;
-      }
-
-      .info-list {
-        display: inline-block;
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-      }
-
-      .pic-list {
-        display: block;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-      }
-
-      .pic-list-item {
-        display: inline-block;
-        margin-right: 2px;
-        width: calc((100%/3) - 2px);
-      }
-
-      .pic-list-item:last-of-type {
-        margin-right: 0;
-      }
-
-      .info-list h4 {
-        margin: 0;
-      }
-
-      .info-list a {
-        text-decoration: none;
-      }
-
-      @media screen and (min-width: 750px) {
-        #header, #map {
-          margin-left: 200px;
-        }
-
-        .hamburger, .closebtn {
-          display: none;
-        }
-
-        .page-title {
-          font-size: 30px;
-          top: 15%;
-        }
-
-        .sidenav {
-          width: 200px;
-        }
-      }
-    </style>
   </head>
   <body>
     <header id="header">
@@ -188,13 +26,14 @@
 
     </div>
 
-    <div id="map"></div>
+    <main id="map"></main>
 
     <script src="js/knockout-3.4.2.js" type="text/javascript"></script>
     <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="js/maps.js" type="text/javascript" async defer></script>
-    <script src="js/model.js" type="text/javascript" async defer></script>
+    <script src="js/mapStyles.js" type="text/javascript"></script>
+    <script src="js/maps.js" type="text/javascript"></script>
+    <script src="js/model.js" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1M9J_w7JXTULSo3lb0-kZN46iQuxeccU&callback=initMap"
-    onerror="mapsError()" async defer></script>
+    onerror="mapsError()" async></script>
   </body>
 </html>

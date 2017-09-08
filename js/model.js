@@ -1,4 +1,4 @@
-function appViewModel() {
+function AppViewModel() {
   var self = this;
 
   // data for each location
@@ -92,6 +92,6 @@ function appViewModel() {
   }, self);
 }
 
-var data = new appViewModel();
+var data = new AppViewModel();
 
 ko.applyBindings(data);
